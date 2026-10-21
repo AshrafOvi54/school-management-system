@@ -1,0 +1,14 @@
+# Environment variables (Credentials)
+.env
+
+# Go binaries & build artifacts
+*.exe
+*.exe~
+*.dll
+*.so
+*.dylib
+bin/
+
+# OS specific files
+.DS_Store
+Thumbs.db
