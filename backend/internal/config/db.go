@@ -12,20 +12,16 @@ import (
 var DB *gorm.DB
 
 func ConnectDB() {
-	host := os.Getenv("DB_HOST")
-	user := os.Getenv("DB_USER")
-	password := os.Getenv("DB_PASSWORD")
-	dbname := os.Getenv("DB_NAME")
-	port := os.Getenv("DB_PORT")
-
-	dsn := fmt.Sprintf("host=%s user=%s password=%s dbname=%s port=%s sslmode=disable TimeZone=Asia/Dhaka",
-		host, user, password, dbname, port)
+	dsn := os.Getenv("DATABASE_URL")
+	if dsn == "" {
+		log.Fatal("DATABASE_URL not found in .env file")
+	}
 
 	var err error
 	DB, err = gorm.Open(postgres.Open(dsn), &gorm.Config{})
 	if err != nil {
-		log.Fatal("Failed to connect to Database: ", err)
+		log.Fatal("Failed to connect to Cloud PostgreSQL: ", err)
 	}
 
-	fmt.Println("🚀 Database Connected Successfully!")
+	fmt.Println("🚀 Cloud PostgreSQL (Neon) Connected Successfully!")
 }

@@ -1,0 +1,18 @@
+# Dependencies
+**/node_modules/
+frontend/dist/
+
+# Environment Variables & Secrets
+**/.env
+**/.env.*
+!**/.env.example
+
+# Compiled binaries
+*.exe
+backend/bin/
+
+# IDE & OS
+.vscode/
+.idea/
+.DS_Store
+Thumbs.db
